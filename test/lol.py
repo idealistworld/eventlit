@@ -15,7 +15,7 @@ soup = BeautifulSoup(html_content, 'html.parser')
 # Find all the event cards on the page
 
 #event_cards = soup.find_all('div', class_='eds-media-card-content__content')
-#event_cards = soup.find_all('div', class_='browse-cards-container')
+#event_cards = soup.find_all('div', class_='browse-cards-contpythainer')
 event_cards = soup.find_all('div', class_='content-bucket')
 event_links = soup.find_all("a", class_="event-card-link")
 
@@ -48,12 +48,9 @@ for card in event_cards:
     event_time_element = card.find('div', class_='Typography_root__4bejd #585163 Typography_body-md-bold__4bejd eds-text-color--primary-brand Typography_align-match-parent__4bejd')
     event_time = event_time_element.text.strip() if event_time_element else "N/A"
 
-
     # Write the extracted information to the CSV file
     csv_writer.writerow([event_name, event_date, event_location, event_urls[counter]])
     counter+=1
-
-print(soup)
 
 # Close the CSV file
 csv_file.close()
